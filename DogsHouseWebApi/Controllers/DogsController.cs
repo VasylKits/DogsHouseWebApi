@@ -14,19 +14,19 @@ namespace WebApi.Controllers;
 [Route("[controller]")]
 public class DogsController : ApiControllerBase
 {
-    [HttpGet("ping")]
+    [HttpGet("~/ping")]
     [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorInfo), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Ping()
         => (await Mediator.Send(new PingRequest())).ToActionResult();
 
-    [HttpGet("dogs")]
+    [HttpGet("~/dogs")]
     [ProducesResponseType(typeof(List<GetDogsResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorInfo), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetDogs([FromQuery] GetAllDogsQuery query)
         => (await Mediator.Send(query)).ToActionResult();
 
-    [HttpPost("dog")]
+    [HttpPost("~/dog")]
     [ProducesResponseType(typeof(CreateDogResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorInfo), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> CreateDog([FromBody] CreateDogCommand command)
@@ -38,7 +38,7 @@ public class DogsController : ApiControllerBase
     public async Task<IActionResult> UpdateDog([FromBody] EditDogCommand command)
         => (await Mediator.Send(command)).ToActionResult();
 
-    [HttpDelete("{id}")]
+    [HttpDelete("~/{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorInfo), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> DeleteDog([FromRoute] int id)
