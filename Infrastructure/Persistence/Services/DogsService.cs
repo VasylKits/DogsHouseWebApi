@@ -55,7 +55,7 @@ public class DogsService : IDogsService
                     case "color":
                         dogs = request.Order.ToLower() == "desc" ? dogs.OrderByDescending(d => d.Color) : dogs.OrderBy(d => d.Color);
                         break;
-                    case "taillength":
+                    case "tail_length":
                         dogs = request.Order.ToLower() == "desc" ? dogs.OrderByDescending(d => d.TailLength) : dogs.OrderBy(d => d.TailLength);
                         break;
                     case "weight":
